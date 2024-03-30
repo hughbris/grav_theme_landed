@@ -59,18 +59,6 @@ Manually updating Landed is pretty simple. Here is what you will need to do to g
 
 > Note: Any changes you have made to any of the files listed under this directory will also be removed and replaced by the new set. Any files located elsewhere (for example a YAML settings file placed in `user/config/themes`) will remain intact.
 
-# Setup
-
-If you want to set Landed as the default theme, you can do so by following these steps:
-
-* Navigate to `/your/site/grav/user/config`.
-* Open the **system.yaml** file.
-* Change the `theme:` setting to `theme: landed`.
-* Save your changes.
-* Clear the Grav cache. The simplest way to do this is by going to the root Grav directory in Terminal and typing `bin/grav clear-cache`.
-
-Once this is done, you should be able to see the new theme on the frontend. Keep in mind any customizations made to the previous theme will not be reflected as all of the theme and templating information is now being pulled from the **landed** folder.
-
 # Usage
 
 ## Supported Page Templates
@@ -146,6 +134,18 @@ menu:
 The `url:` and `text:` options are required.
 
 If you supply a `classes:` option, those are added to the menu link classes. This is a new option added for the Landed theme.
+
+## Setup
+
+If you want to set Landed as the default theme, you can do so by following these steps:
+
+* Navigate to `/your/site/grav/user/config`.
+* Open the **system.yaml** file.
+* Change the `theme:` setting to `theme: landed`.
+* Save your changes.
+* Clear the Grav cache. The simplest way to do this is by going to the root Grav directory in Terminal and typing `bin/grav clear-cache`.
+
+Once this is done, you should be able to see the new theme on the frontend. Keep in mind any customizations made to the previous theme will not be reflected as all of the theme and templating information is now being pulled from the **landed** folder.
 
 ## Examples in the wild
 
