@@ -75,6 +75,10 @@ Manually updating Landed is pretty simple. Here is what you will need to do to g
 
 # Configuring
 
+## Custom styles
+
+The theme is bundled with an empty CSS file at `css/custom.css`. As the name suggests, this is where you can add any additional styles for your implementation of the theme. If your site uses a theme that inherits Landed, you can add this file and your customisations at the same relative location in your own theme.
+
 ## Menu Features
 
 ### Dropdown Menu
