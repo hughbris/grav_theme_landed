@@ -115,7 +115,7 @@ If several of your templates require a deferred asset block, create a common sha
 
 You can enable **dropdown menu** support by enabling it in the `landed.yaml` configuration file. As per usual, copy this file to your `user/config/themes/` folder (create if required) and edit there.
 
-```
+```yaml
 dropdown:
   enabled: true
 ```
@@ -126,7 +126,7 @@ This will ensure that sub-pages show up as sub-menus in the navigation.
 
 Each page shows up in the menu using the title by default, however you can set what displays in the menu directly by setting an explicit `menu:` option in the page header:
 
-```
+```yaml
 menu: My Menu
 ```
 
@@ -134,7 +134,7 @@ menu: My Menu
 
 By default, Grav generates the menu from the page structure.  However, there are times when you may want to add custom menu items to the end of the menu.  This is now supported in Landed by creating a menu list in your `site.yaml` file.  An example of this is as follows:
 
-```
+```yaml
 menu:
     - url: https://github.com/hughbris/grav-theme-landed
       text: Source
