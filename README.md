@@ -71,31 +71,8 @@ Manually updating Landed is pretty simple. Here is what you will need to do to g
 
 ## Deferred assets block support
 
-As [explained in the Grav blog](https://getgrav.org/blog/important-theme-updates), since Grav 1.5.10 deferred blocks are supported and it will be standard to invoke assets rendering using these in the near future. _For the page templates included_, **this theme does not require deferred asset blocks**, and including a deferred asset block will crash a site running an older version of Grav.
+[Deferred blocks were introduced in Grav 1.5.10](https://getgrav.org/blog/important-theme-updates) and **are now impemented in this theme**.
 
-Since v0.1.2 of this theme, it is simple to override the base template so that you can use a deferred asset block. In a template that extends `partials/base.html.twig`, simply add a deferred block called `assets`. For example:
-
-```twig
-{% extends 'partials/base.html.twig' %}
-
-{# for example, add a custom javascript file #}
-{% block javascripts %}
-  {% do assets.addJs('theme://js/site.js') }}
-  {{ parent() }}
-{% endblock %}
-
-{# then override the default non-deferred assets block with a deferred block, and optionally alter it #}
-{% block assets deferred %}
-  {{ parent() }}
-{% endblock %}
-```
-
-If several of your templates require a deferred asset block, either:
-
-* create a common shared partial template, say `partials/extended-base.html.twig` with similar contents to the example above, and change your template files so that they extend this rather than `partials/base.html.twig`; _or_
-* modify a copy of `partials/base.html.twig`.
-
-If several of your templates require a deferred asset block, create a common shared partial template, say `partials/extended-base.html.twig` with similar contents to the example above, and change your template files so that they extend this rather than `partials/base.html.twig`.
 
 ## Menu Features
 
