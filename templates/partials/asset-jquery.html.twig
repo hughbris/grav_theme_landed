@@ -1,0 +1,6 @@
+{% if theme_config.conformance.jquery|defined(false) %}
+    {% script 'theme://js/jquery.min.js' at 'bottom' %}
+    {% do assets.removeJs('jquery') %} {# Unlike like my other themes, Landed does not throw the JS error when debugbar is showing, but it does load two jQuery libraries. It's ugly and so is this. Also refer issue #13. #}
+{% elseif not (system.debugger.enabled and system.debugger.provider|defined('__other') ==  'debugbar') %} {# refer https://github.com/getgrav/grav/issues/157 but still this test should not be required #}
+    {% script 'jquery' at 'bottom' %}
+{% endif %}

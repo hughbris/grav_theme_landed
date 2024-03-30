@@ -26,7 +26,11 @@
     {% endblock %}
 
     {% block javascripts %}
-        {% do assets.addJs('theme://js/jquery.min.js', {'group': 'bottom'}) %}
+
+        {% block jquery %}
+            {{ include('partials/asset-jquery.html.twig') }}
+        {% endblock %}
+
         {% do assets.addJs('theme://js/jquery.scrolly.min.js', {'group': 'bottom'}) %}
         {% do assets.addJs('theme://js/jquery.dropotron.min.js', {'group': 'bottom'}) %}
         {% do assets.addJs('theme://js/jquery.scrollex.min.js', {'group': 'bottom'}) %}
