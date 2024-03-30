@@ -1,3 +1,16 @@
+# 0.3.0
+##  30-03-2024
+
+1. [](#new)
+    * Add support and an option to use latest jQuery bundled by Grav (5b21cae)
+    * Add blueprints including exciting new setting (cb580d0)
+    * Show theme version in debugger (7b1d02c)
+
+1. [](#improved)
+    * Fix this changelog's sort (83d3147)
+    * Improve docs
+    * Update docs
+
 # v0.2.0
 ##  19-02-2022
 

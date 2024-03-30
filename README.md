@@ -156,6 +156,6 @@ Once this is done, you should be able to see the new theme on the frontend. Keep
 
 None that I know of yet! Please let me know if you are using it (hey, it's free publicity).
 
-I am slowly building a site using this template.
+The site I was building using this theme unfortunately didn't launch.
 
-I have also deployed a [live demo for the theme](https://behold.metamotive.co.nz/landed) which usually runs the latest release.
+In case you missed the other links, I have also deployed a [live demo for the theme](https://behold.metamotive.co.nz/landed) which usually runs the latest release.
