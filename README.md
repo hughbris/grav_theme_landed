@@ -73,6 +73,7 @@ Manually updating Landed is pretty simple. Here is what you will need to do to g
 
 [Deferred blocks were introduced in Grav 1.5.10](https://getgrav.org/blog/important-theme-updates) and **are now impemented in this theme**.
 
+# Configuring
 
 ## Menu Features
 
@@ -111,6 +112,29 @@ menu:
 The `url:` and `text:` options are required.
 
 If you supply a `classes:` option, those are added to the menu link classes. This is a new option added for the Landed theme.
+
+## Source theme conformance
+
+Thanks to some weird workarounds that hopefully don't bring me technical debt (sorry future self!), and not wanting to break any existing implementations, I've added a conformance frontmatter property to contain settings for potentially anything that might be a departure from the source HTML5UP theme.
+
+```yaml
+# theme elements that should match the source theme rather than an improved one offered in this Grav theme
+conformance:
+    jquery: true
+```
+
+### jQuery library
+
+The theme is bundled with a [minified jQuery source file](https://github.com/hughbris/grav-theme-landed/blob/develop/js/jquery.min.js), which is out of date but works, and which you may prefer to use instead of the [much later version still bundled as an asset group by Grav core](https://github.com/getgrav/grav/blob/afb5b02e5750f0f9c0bcc73de5d3f62947881722/system/config/system.yaml#L139).
+
+> For the moment your site will keep working as it has been if you don't change any settings. This might change BTW, slowly slowly.
+
+There has been [an issue](https://github.com/hughbris/grav-theme-landed/issues/13) and some dependabot alerts about the old jQuery bundled with the source theme and with this Grav theme. I am not an expert and have not looked closely, but I _suspect_ this theme is _not vulnerable_ to these exploits. _This is not advice. Also not an invitation to anyone with nefarious intent._
+
+This theme provides **two more options** to load whatever you like for your jQuery. The jQuery asset is added:
+
+* in a partial template at `templates/partials/asset-jquery.html.twig` that _you can easily override in a custom theme_;
+* within a Twig block called `jquery` that _you can extend inside another template_.
 
 ## Setup
 
