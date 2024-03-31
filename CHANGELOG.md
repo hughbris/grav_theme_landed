@@ -5,7 +5,6 @@
     * Add support and an option to use latest jQuery bundled by Grav (5b21cae)
     * Add blueprints including exciting new setting (cb580d0)
     * Show theme version in debugger (7b1d02c)
-
 1. [](#improved)
     * Fix this changelog's sort (83d3147)
     * Improve docs
@@ -40,7 +39,6 @@
 
 1. [](#improved)
     * Base template modified so it can be extended to support a deferred asset block ([#3](https://github.com/hughbris/grav-theme-landed/issues/3))
-
 1. [](#new)
     * Instructions for deploying deferred asset blocks added to README
     * custom default favicon for theme
