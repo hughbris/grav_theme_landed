@@ -1,5 +1,5 @@
 ---
-# title: 'Landed by HTML5 UP'
+title: 'Landed by HTML5 UP'
 menu: Home
 body_classes: landing
 
