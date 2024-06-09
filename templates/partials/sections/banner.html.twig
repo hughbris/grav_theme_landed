@@ -3,7 +3,7 @@
 	{% if banner_data.media %}
 		{% set background_url = banner_data.media.background.location ? page.media[banner_data.media.background.location].url %}
 		{% set hero_url = banner_data.media.hero.location ? page.media[banner_data.media.hero.location].url %}
-		{% set hero_alt = banner_data.media.hero.alt %}
+		{% set hero_alt = banner_data.media.hero.alt|default(page.media[banner_data.media.hero.location].meta.alt_text) %}
 	{% else %}
 		{% set background_url = banner_data.background_image ? url("theme://images/#{banner_data.background_image}") %}
 		{% set hero_url = banner_data.hero_image ? url("theme://images/#{banner_data.hero_image}") %}
