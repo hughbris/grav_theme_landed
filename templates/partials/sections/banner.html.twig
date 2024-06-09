@@ -2,8 +2,21 @@
 	{% set banner_data = page.header.banner %}
 	{% if banner_data.media %}
 		{% set background_url = banner_data.media.background.location ? page.media[banner_data.media.background.location].url %}
-		{% set hero_url = banner_data.media.hero.location ? page.media[banner_data.media.hero.location].url %}
-		{% set hero_alt = banner_data.media.hero.alt|default(page.media[banner_data.media.hero.location].meta.alt_text) %}
+		{% set hero_image = page.media[banner_data.media.hero.location] %}
+		{% if hero_image %}
+			{% set hero_url = hero_image ? hero_image.url %}
+			{% set hero_alt = banner_data.media.hero.alt|default(hero_image.meta.alt_text) %}
+			{# force square ratio if necessary, else it can look horrendous .. #}
+			{% if hero_image.width > hero_image.height %}
+				{{ debug('Hero image has more width, cropping to square') }}
+				{% set offset = (hero_image.width - hero_image.height) // 2 %}
+				{% set hero_url = hero_image.crop(offset, 0, hero_image.height, hero_image.height).url %}
+			{% elseif hero_image.width < hero_image.height %}
+				{{ debug('Hero image has more height, cropping to square') }}
+				{% set offset = (hero_image.height - hero_image.width) // 2 %}
+				{% set hero_url = hero_image.crop(0, offset, hero_image.width, hero_image.width).url %}
+			{% endif %}
+		{% endif %}
 	{% else %}
 		{% set background_url = banner_data.background_image ? url("theme://images/#{banner_data.background_image}") %}
 		{% set hero_url = banner_data.hero_image ? url("theme://images/#{banner_data.hero_image}") %}
@@ -21,7 +34,7 @@
 	{# set banner media to defaults if necessary #}
 	{% set background_url = background_url|default(url('theme://images/banner.jpg')) %}
 	{% set hero_url = hero_url|default(url('theme://images/pic01.jpg')) %}
-	{% set hero_alt = hero_alt|default('') %} {# just being explicit here #}
+	{% set hero_alt = hero_alt|default('') %}
 <!-- Banner -->
 	<section id="{{ id }}" style="background-image: url('{{ background_url }}')">
 		<div class="content">
