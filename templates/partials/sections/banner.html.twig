@@ -1,7 +1,29 @@
 {% if page.header.banner %}
 	{% set banner_data = page.header.banner %}
+	{% if banner_data.media %}
+		{% set background_url = banner_data.media.background.location ? page.media[banner_data.media.background.location].url %}
+		{% set hero_url = banner_data.media.hero.location ? page.media[banner_data.media.hero.location].url %}
+		{% set hero_alt = banner_data.media.hero.alt %}
+	{% else %}
+		{% set background_url = banner_data.background_image ? url("theme://images/#{banner_data.background_image}") %}
+		{% set hero_url = banner_data.hero_image ? url("theme://images/#{banner_data.hero_image}") %}
+		{% set hero_alt = banner_data.hero_alt %}
+		{% set deprecation_mappings = {
+			'background_image': 'media.background.location',
+			'hero_image': 'media.hero.location',
+			'hero_alt': 'media.hero.alt',
+			} %}
+		{% for old, new in deprecation_mappings if banner_data[old] %} {# TODO: etc others #}
+			{{ dump("Homepage header banner.#{old} will be deprecated for banner.#{new} in the next major release.") }}
+		{% endfor %}
+	{% endif %}
+
+	{# set banner media to defaults if necessary #}
+	{% set background_url = background_url|default(url('theme://images/banner.jpg')) %}
+	{% set hero_url = hero_url|default(url('theme://images/pic01.jpg')) %}
+	{% set hero_alt = hero_alt|default('') %} {# just being explicit here #}
 <!-- Banner -->
-	<section id="{{ id }}" style="background-image: url('{{ url('theme://images/' ~ (banner_data.background_image ?: 'banner.jpg') ) }}')">
+	<section id="{{ id }}" style="background-image: url('{{ background_url }}')">
 		<div class="content">
 			<header>
 				<h2>{{ banner_data.headline }}</h2>
@@ -9,12 +31,12 @@
 					<p>{{ banner_data.quips|join('<br/>')|raw }}</p>
 				{% endif %}
 			</header>
-			<span class="image"><img src="{{ url('theme://images/' ~ (banner_data.hero_image ?: 'pic01.jpg') ) }}" alt="{{ banner_data.hero_alt }}" /></span>
+			<span class="image"><img src="{{ hero_url }}" alt="{{ hero_alt }}" /></span>
 		</div>
 	{% if next_id %}
 		<a href="#{{ next_id }}" class="goto-next scrolly">Next</a>
 	{% endif %}
 	</section>
 {% else %}
-	{{ dump('Notice: homepage banner section not rendered because page header "banner" is absent in frontmatter.') }}
+	{{ debug('Notice: homepage banner section not rendered because page header "banner" is absent in frontmatter.') }}
 {% endif %}

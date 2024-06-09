@@ -1,0 +1,33 @@
+title: Homepage
+'@extends':
+    type: default
+    context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+
+      fields:
+
+        banner:
+          type: tab
+          title: Banner
+          ordering@: options
+
+          fields:
+
+            header.banner.media.background.location:
+              type: pagemediaselect
+              label: Background image
+              multiple: false
+              # help
+
+            header.banner.media.hero.location:
+              type: pagemediaselect
+              label: Hero image
+              multiple: false
+              # help
+
+            header.banner.media.hero.alt:
+              type: text
+              label: Hero image alt text

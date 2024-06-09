@@ -8,9 +8,16 @@ banner:
     quips:
         - 'And there are no hoverboards or flying cars.'
         - 'Just apps. Lots of mother flipping apps.'
-    # background_image:
-    # hero_image:
-    # hero_alt:
+    # media:
+    #     background:
+    #         location: library.jpg
+    #     hero:
+    #         location: desk.jpg
+    #         alt: Open laptop
+    # Legacy properties for testing ...
+    # background_image: _banner.jpg
+    # hero_image: _pic01.jpg
+    # hero_alt: Open lappy
 
 intro:
     headline: 'Odio faucibus ipsum integer consequat'
