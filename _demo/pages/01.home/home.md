@@ -13,7 +13,7 @@ banner:
     #         location: library.jpg
     #     hero:
     #         location: desk.jpg
-    #         alt: Open laptop
+    #         alt: Cluttered desk
     # Legacy properties for testing ...
     # background_image: _banner.jpg
     # hero_image: _pic01.jpg

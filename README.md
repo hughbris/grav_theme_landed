@@ -61,13 +61,17 @@ Manually updating Landed is pretty simple. Here is what you will need to do to g
 
 # Usage
 
-## Supported Page Templates
+## Supported page templates
 
 * [Sample homepage view template](templates/home.html.twig)
 * [Left sidebar two-column template](templates/left-sidebar.html.twig)
 * [Right sidebar two-column template](templates/right-sidebar.html.twig)
 * [Single column template](templates/default.html.twig)
 * Barely distinct [Error page template](templates/error.html.twig)
+
+## Page blueprint provided
+
+* [(Partial) homepage blueprint](blueprints/home.yaml)
 
 ## Deferred assets block support
 
@@ -139,6 +143,40 @@ This theme provides **two more options** to load whatever you like for your jQue
 
 * in a partial template at `templates/partials/asset-jquery.html.twig` that _you can easily override in a custom theme_;
 * within a Twig block called `jquery` that _you can extend inside another template_.
+
+### Homepage settings
+
+The [homepage template](templates/home.html.twig) supports, and is largely driven by, custom page frontmatter. It is yet to be documented fully.
+
+The [demo homepage](_demo/pages/01.home/home.md) provides a comprehensive example implementation of the custom YAML frontmatter that you can adapt. It is reasonably intuitive and you can map parts of it to the [rendered demo page](https://behold.metamotive.co.nz/landed).
+
+> A [homepage blueprint](blueprints/home.yaml) is being developed to support homepage custom YAML frontmatter structures.
+
+#### Homepage banner settings
+
+You can set some homepage banner settings using the Admin plugin console. The theme adds a custom 'Banner' tab where you edit pages.
+
+This is the annotated format for banner frontmatter:
+
+```yaml
+banner:
+    headline: 'Site headine ahoy'
+    quips:
+        - 'A quippy quip under the headline.'
+        - 'And another one makes three.'
+    media:
+    # you can set the images used in the banner, these are all optional and have fallbacks
+        background: # banner background image
+            location: library.jpg # name of an image file in the page folder
+        hero: # banner hero image
+            location: desk.jpg # name of an image file in the page folder
+            alt: Cluttered desk # alt text for hero image
+```
+Note that you can _also_ provide `alt` text for a hero image by using an adjacent [media metafile](https://learn.getgrav.org/17/content/media#metafiles) with an `alt_text` property. However, any nonempty `banner.media.hero.alt` custom frontmatter always takes precedence, so make sure you unset that if you want to reference the media metafile instead.
+
+You can also override a file in your theme's `/images` folder called `banner.jpg` to set the banner's background image. This is a legacy hack method that will probably continue to work because the theme will always come with a fallback hero image at that location.
+
+There are also deprecated legacy custom YAML frontmatter properties under `banner:` that you can specify currently. The [homepage demo page](_demo/pages/01.home/home.md) contains commented out examples. Any new style frontmatter under `banner.media` takes precedent over these values. Legacy frontmatter will not work in future.
 
 ## Setup
 
